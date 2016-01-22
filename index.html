@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>Ejemplo Ajax</title>
+	<script src='js/jquery.min.js'></script>
+</head>
+<body >
+
+<div style='text-align: center'>
+<h1>Escribe el nombre abajo:</h1>
+Nombre <input type='text' onkeyup='mostrarSugerencia(this.value)'>
+<p>Sugerencias <span id='txtSugerencias'></span></p>
+
+<script>
+
+	function mostrarSugerencia(nombre)
+	{
+		$.ajax({
+
+			type: 'POST',
+			url: 'process.php',
+			data : { datos: nombre },
+
+		}).done(function(respuesta){
+			$('#txtSugerencias').text(respuesta);
+
+		});
+
+
+	}
+
+</script>
+</div>
+</body>
+</html>
